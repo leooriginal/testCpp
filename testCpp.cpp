@@ -2,9 +2,8 @@
 
 using namespace std;
 
-int main()
-{
-int x=56;
-int y=47;
-cout << x+y << '\n';
+int main() {
+    int x,y;
+  cin >> x >> y;
+  cout << x/y;
 }
