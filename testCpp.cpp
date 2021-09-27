@@ -1,20 +1,56 @@
-#include <iostream>
+// Это пример кода. В нём много незнакомого, но скоро вы во всём разберётесь.
+// Прочитать код вы можете уже сейчас.
 
-using namespace std;
+#include <algorithm> // многие библиотеки будут изучены в платном курсе
+#include <iostream>
+#include <map>
+#include <string> // эта библиотека изучается далее в теме 1
+#include <vector> // эта библиотека изучается в теме 3
+
+using namespace std; // пространство имён изучается подробнее в платной части курса
+
+// структура (struct) - составной тип данных
+// struct здесь объявляется до main, так как эта структура создана пользователем
+// она не входит в стандартные библиотеки
+// созданая пользователем структура применяется дальше в функции main
+struct Date {
+    int year; // int - целочисленный тип данных; изучается далее в теме 1
+    int month;
+    int day;
+};
 
 int main() {
-    int x,y;
-    double q,w;
+    // переменная имеет тип данных map, который изучается в платном курсе
+    map<string, Date> birth_dates; // birth_dates - имя переменной
+    
+    string name; // строка - тип данных, который изучается далее в теме 1
 
-x = 6;
-y = 5;
-q = 0;
-w = 6.36;
+    // читаем число записей из потока ввода
+    int count;
+    cin >> count;
 
-  cin >> q >> w;
-  cout << static_cast<int> (q+w) << endl;
-       //<< q*w << endl;
+    // читаем все записи, применив цикл; циклы изучаются в теме 2
+    for (int i = 0; i < count; ++i) {
+        int year, month, day;
+        cin >> name >> year >> month >> day;
+        birth_dates[name] = {year, month, day};
+    }
 
-  //cout << (x/y)*1.0 << endl
-  //     << static_cast<int>(q*w) << endl;
+    // контейнер vector изучается в теме 3
+    vector<string> born_in_may;
+
+    // применяем цикл по константности; константность изучается в теме 6
+    for (const auto& [name, date] : birth_dates) {
+        if (date.month == 5) {
+            born_in_may.push_back(name); // добавляем имя в конец
+        }
+    }
+
+    // сортируем массив по алфавиту; сортировка изучается в платной части
+    sort(born_in_may.begin(), born_in_may.end());
+
+    for (const auto& name : born_in_may) {
+        cout << name << ' ';
+    }
+    cout << endl;
 }
