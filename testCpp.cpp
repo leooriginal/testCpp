@@ -40,8 +40,8 @@ int main() {
     vector<string> born_in_may;
 
     // применяем цикл по константности; константность изучается в теме 6
-    for (const auto& [name, date] : birth_dates) {
-        if (date.month == 5) {
+    for (const auto& [name, Date] : birth_dates) {
+        if (Date.month == 5) {
             born_in_may.push_back(name); // добавляем имя в конец
         }
     }
